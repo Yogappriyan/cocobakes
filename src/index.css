@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-cream: #FAF7F2;
+  --color-brand-ivory: #FDFBF7;
+  --color-brand-warm-white: #F8F5F0;
+  --color-brand-beige: #EADBC8;
+  --color-brand-gold: #C59B27;
+  --color-brand-gold-light: #DFB15B;
+  --color-brand-gold-dark: #9B7618;
+  --color-brand-cocoa: #3E2723;
+  --color-brand-dark-cocoa: #23120B;
+  --color-brand-chocolate: #2D1810;
+  --color-brand-amber: #D47A22;
+}
+
+:root {
+  --theme-primary: #23120B;
+  --theme-secondary: #C59B27;
+  --theme-bg: #FAF7F2;
+  --theme-text: #2D1810;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  overflow-x: hidden;
+}
+
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8C4B6;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A880;
+}
+
+/* Velvet Cocoa Luxury Styling & Animations */
+@keyframes chocolateSheen {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-chocolate-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-chocolate-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(223, 177, 91, 0.35),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.group:hover .animate-chocolate-sheen::after {
+  animation: chocolateSheen 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+@keyframes goldPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(197, 155, 39, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(197, 155, 39, 0.55);
+  }
+}
+
+.animate-gold-glow {
+  animation: goldPulseGlow 3s ease-in-out infinite;
+}
+
+/* Print styles for Invoice */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #invoice-print-area, #invoice-print-area * {
+    visibility: visible;
+  }
+  #invoice-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

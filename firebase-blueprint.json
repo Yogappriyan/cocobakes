@@ -1,0 +1,224 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Bakery and confectionery product item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "slug": { "type": "string", "maxLength": 150 },
+        "name": { "type": "string", "maxLength": 200 },
+        "sku": { "type": "string", "maxLength": 100 },
+        "categoryId": { "type": "string", "maxLength": 100 },
+        "categoryName": { "type": "string", "maxLength": 150 },
+        "subcategory": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 5000 },
+        "shortDescription": { "type": "string", "maxLength": 500 },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "discountPercentage": { "type": "number" },
+        "stock": { "type": "number" },
+        "lowStockThreshold": { "type": "number" },
+        "weight": { "type": "string", "maxLength": 100 },
+        "prepTime": { "type": "string", "maxLength": 150 },
+        "thumbnail": { "type": "string", "maxLength": 1000 },
+        "badge": { "type": "string", "maxLength": 50 },
+        "status": { "type": "string", "enum": ["active", "draft", "out_of_stock", "archived"] },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "eggless": { "type": "boolean" },
+        "glutenFree": { "type": "boolean" },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name", "categoryId", "price", "stock", "status"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Confectionery product category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 100 },
+        "slug": { "type": "string", "maxLength": 120 },
+        "name": { "type": "string", "maxLength": 150 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string", "maxLength": 1000 },
+        "displayOrder": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "inactive"] },
+        "productCount": { "type": "number" }
+      },
+      "required": ["id", "name", "slug", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "orderNumber": { "type": "string", "maxLength": 50 },
+        "customerId": { "type": "string", "maxLength": 128 },
+        "customer": { "type": "object" },
+        "address": { "type": "object" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "couponCode": { "type": "string", "maxLength": 50 },
+        "deliveryOption": { "type": "object" },
+        "deliveryFee": { "type": "number" },
+        "tax": { "type": "number" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "preparing", "ready", "out_for_delivery", "delivered", "cancelled", "refunded"] },
+        "paymentStatus": { "type": "string", "enum": ["pending", "paid", "failed", "refunded"] },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "paymentId": { "type": "string", "maxLength": 128 },
+        "timeline": { "type": "array" },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "updatedAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "orderNumber", "customer", "address", "items", "total", "status", "paymentStatus"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Store discount coupon code",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 100 },
+        "code": { "type": "string", "maxLength": 50 },
+        "discountType": { "type": "string", "enum": ["percentage", "fixed"] },
+        "discountValue": { "type": "number" },
+        "minOrderAmount": { "type": "number" },
+        "maxDiscount": { "type": "number" },
+        "startDate": { "type": "string", "maxLength": 50 },
+        "expiryDate": { "type": "string", "maxLength": 50 },
+        "usageLimit": { "type": "number" },
+        "usedCount": { "type": "number" },
+        "perUserLimit": { "type": "number" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "code", "discountType", "discountValue", "active"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Product review submitted by customer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "productId": { "type": "string", "maxLength": 128 },
+        "productName": { "type": "string", "maxLength": 200 },
+        "customerName": { "type": "string", "maxLength": 150 },
+        "customerEmail": { "type": "string", "maxLength": 150 },
+        "rating": { "type": "number" },
+        "title": { "type": "string", "maxLength": 200 },
+        "comment": { "type": "string", "maxLength": 2000 },
+        "verifiedPurchase": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["approved", "pending", "rejected", "hidden"] },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "productId", "customerName", "rating", "comment", "status"]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Customer inquiry or custom cake request",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "email": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "message": { "type": "string", "maxLength": 3000 },
+        "subject": { "type": "string", "maxLength": 200 },
+        "status": { "type": "string", "enum": ["unread", "read", "replied"] },
+        "createdAt": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name", "email", "message", "status"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Storefront configuration settings",
+      "type": "object",
+      "properties": {
+        "brandName": { "type": "string", "maxLength": 150 },
+        "tagline": { "type": "string", "maxLength": 250 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "contactNumber": { "type": "string", "maxLength": 50 },
+        "whatsappNumber": { "type": "string", "maxLength": 50 },
+        "email": { "type": "string", "maxLength": 150 },
+        "address": { "type": "string", "maxLength": 500 },
+        "businessHours": { "type": "string", "maxLength": 200 },
+        "currencySymbol": { "type": "string", "maxLength": 10 },
+        "currencyCode": { "type": "string", "maxLength": 10 },
+        "defaultDeliveryFee": { "type": "number" },
+        "freeDeliveryThreshold": { "type": "number" },
+        "expressDeliveryFee": { "type": "number" },
+        "enableCod": { "type": "boolean" },
+        "enableRazorpay": { "type": "boolean" },
+        "razorpayKeyId": { "type": "string", "maxLength": 100 },
+        "announcementBarText": { "type": "string", "maxLength": 300 },
+        "announcementBarActive": { "type": "boolean" }
+      },
+      "required": ["brandName", "currencyCode"]
+    },
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "User profile with role and contact info",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 150 },
+        "fullName": { "type": "string", "maxLength": 150 },
+        "phone": { "type": "string", "maxLength": 50 },
+        "role": { "type": "string", "enum": ["customer", "admin"] }
+      },
+      "required": ["id", "email", "role"]
+    },
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Internal record designating admin status",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 150 },
+        "role": { "type": "string", "enum": ["admin"] }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Bakery and chocolate products available on the storefront"
+    },
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Product categories"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Placed orders by customers"
+    },
+    "/coupons/{couponId}": {
+      "schema": "Coupon",
+      "description": "Promotional coupon codes"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Customer reviews and testimonials"
+    },
+    "/contact_messages/{messageId}": {
+      "schema": "ContactMessage",
+      "description": "Inquiries and custom cake requests"
+    },
+    "/site_settings/general": {
+      "schema": "SiteSettings",
+      "description": "Global storefront settings and preferences"
+    },
+    "/users/{userId}": {
+      "schema": "UserAccount",
+      "description": "User profile information"
+    },
+    "/admins/{adminId}": {
+      "schema": "AdminRecord",
+      "description": "Designated administrator access records"
+    }
+  }
+}
