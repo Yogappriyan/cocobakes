@@ -106,7 +106,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ navigate }) => {
 
     setIsProcessing(true);
 
-    const orderId = `VC-${Math.floor(1000 + Math.random() * 9000)}`;
+    const orderId = `HCT-${Math.floor(1000 + Math.random() * 9000)}`;
 
     const orderPayload = {
       customer: {

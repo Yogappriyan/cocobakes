@@ -8,7 +8,7 @@ export const InstagramSection: React.FC = () => {
   const instaPhotos = [
     {
       url: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80',
-      caption: 'Warm Ferrero Rocher Brownie straight from the oven #VelvetCocoa',
+      caption: 'Warm Ferrero Rocher Brownie straight from the oven #HomemadeCakesTrichy',
     },
     {
       url: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80',

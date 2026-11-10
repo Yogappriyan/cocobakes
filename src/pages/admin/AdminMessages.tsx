@@ -13,7 +13,7 @@ export const AdminMessages: React.FC = () => {
 
   const handleWhatsApp = (phone: string, name: string) => {
     const cleanPhone = phone.replace(/[^0-9]/g, '');
-    const message = encodeURIComponent(`Hello ${name}, this is the Head Pâtissier from Velvet Cocoa Atelier regarding your custom inquiry.`);
+    const message = encodeURIComponent(`Hello ${name}, this is the Head Baker from Homemade Cakes Trichy regarding your custom inquiry.`);
     window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
   };
 

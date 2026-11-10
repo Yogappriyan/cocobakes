@@ -67,7 +67,7 @@ export const AdminProducts: React.FC = () => {
     setPrice(450);
     setOriginalPrice(550);
     setStock(20);
-    setSku(`VC-${Math.floor(100 + Math.random() * 900)}`);
+    setSku(`HCT-${Math.floor(100 + Math.random() * 900)}`);
     setBadge('');
     setWeight('450g (6 Pieces)');
     setIngredients('Belgian Dark Couverture (54%), French Cultured Butter, Organic Flour, Cane Sugar');
@@ -79,8 +79,8 @@ export const AdminProducts: React.FC = () => {
     setFeatured(true);
     setActive(true);
     setVariants([
-      { id: 'v1', name: 'Box of 6 (Classic)', sku: 'VC-VAR-1', price: 450, stock: 25, inStock: true },
-      { id: 'v2', name: 'Box of 12 (Celebration)', sku: 'VC-VAR-2', price: 850, stock: 20, inStock: true },
+      { id: 'v1', name: 'Box of 6 (Classic)', sku: 'HCT-VAR-1', price: 450, stock: 25, inStock: true },
+      { id: 'v2', name: 'Box of 12 (Celebration)', sku: 'HCT-VAR-2', price: 850, stock: 20, inStock: true },
     ]);
     setAddons([
       { id: 'a1', name: 'Warm Fudge Ganache Dip (100ml)', price: 120 },
@@ -446,7 +446,7 @@ export const AdminProducts: React.FC = () => {
                       type="text"
                       value={sku}
                       onChange={(e) => setSku(e.target.value)}
-                      placeholder="e.g. VC-BR-01"
+                      placeholder="e.g. HCT-BR-01"
                       className="w-full p-2.5 bg-[#FAF7F2] border border-[#2D1810]/15 rounded-xl focus:outline-hidden focus:border-[#C59B27]"
                     />
                   </div>

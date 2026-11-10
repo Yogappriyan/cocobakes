@@ -1,6 +1,7 @@
 import {
   collection,
   doc,
+  getDoc,
   getDocs,
   setDoc,
   updateDoc,
@@ -65,6 +66,27 @@ export async function seedFirestoreIfEmpty(): Promise<{ seeded: boolean; message
 
       return { seeded: true, message: 'Initial bakery catalogue seeded to Firestore' };
     }
+
+    // Check if site_settings in Firestore has legacy brand name
+    try {
+      const settingsSnap = await getDoc(doc(db, COLLECTIONS.SETTINGS, 'general'));
+      if (settingsSnap.exists() && (settingsSnap.data().brandName === 'Velvet Cocoa' || !settingsSnap.data().brandName)) {
+        await updateDoc(doc(db, COLLECTIONS.SETTINGS, 'general'), {
+          brandName: 'Homemade Cakes Trichy',
+          tagline: 'Artisanal Home Bakery & Custom Cakes',
+          description: 'Handcrafted custom celebration cakes, freshly baked brownies, and gourmet desserts made with love in Trichy.',
+          logo: 'Homemade Cakes Trichy',
+          email: 'concierge@homemadecakestrichy.com',
+          address: '42 Heritage Atelier Lane, Thillai Nagar, Tiruchirappalli (Trichy), Tamil Nadu 620018',
+          instagramHandle: '@homemadecakestrichy',
+          metaTitle: 'Homemade Cakes Trichy - Artisanal Bakery & Custom Cakes',
+          metaDescription: 'Fresh homemade celebration cakes, artisanal brownies, and custom dessert hampers in Trichy.',
+        });
+      }
+    } catch {
+      // Non-blocking
+    }
+
     return { seeded: false, message: 'Firestore already contains catalog data' };
   } catch (error) {
     console.warn('Seed error (may require rules approval or offline state):', error);

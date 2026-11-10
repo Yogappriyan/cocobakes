@@ -99,7 +99,7 @@ export const TrackOrderPage: React.FC<TrackOrderPageProps> = ({ navigate }) => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value.toUpperCase())}
-            placeholder="Enter Order ID (e.g. VC-8921)"
+            placeholder="Enter Order ID (e.g. HCT-8921)"
             className="w-full px-4 py-3 text-xs sm:text-sm bg-white border border-[#2D1810]/15 rounded-xl uppercase tracking-wider font-semibold focus:outline-hidden focus:border-[#C59B27] shadow-2xs"
           />
         </div>

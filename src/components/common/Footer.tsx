@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPath = '/', navigate }) =
       showToast('Invalid Email', 'Please enter a valid email address', 'warning');
       return;
     }
-    showToast('Subscribed 🎉', 'Welcome to the Velvet Cocoa tasting club! 10% coupon emailed.');
+    showToast('Subscribed 🎉', `Welcome to the ${siteSettings.brandName} tasting club! 10% coupon emailed.`);
     setNewsletterEmail('');
   };
 

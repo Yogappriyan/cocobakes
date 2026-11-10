@@ -42,13 +42,13 @@ export const AccountPage: React.FC<AccountPageProps> = ({ navigate }) => {
       {/* Profile Overview Card */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#2D1810]/10 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-[#23120B] text-[#DFB15B] flex items-center justify-center font-serif text-2xl font-bold">
-            VC
+          <div className="w-16 h-16 rounded-2xl bg-[#23120B] text-[#DFB15B] flex items-center justify-center font-serif text-xl font-bold">
+            HCT
           </div>
           <div>
             <h1 className="font-serif text-2xl font-bold text-[#23120B]">Patron Member</h1>
             <p className="text-xs text-[#3E2723]/70 mt-0.5">
-              Velvet Cocoa Atelier Connoisseur • Premium Tier
+              {siteSettings.brandName} Connoisseur • Premium Tier
             </p>
           </div>
         </div>

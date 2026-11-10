@@ -211,27 +211,31 @@ interface StoreContextType {
 const StoreContext = createContext<StoreContextType | null>(null);
 
 const STORAGE_KEYS = {
-  PRODUCTS: 'velvet_cocoa_products',
-  CATEGORIES: 'velvet_cocoa_categories',
-  ORDERS: 'velvet_cocoa_orders',
-  CUSTOMERS: 'velvet_cocoa_customers',
-  COUPONS: 'velvet_cocoa_coupons',
-  REVIEWS: 'velvet_cocoa_reviews',
-  TESTIMONIALS: 'velvet_cocoa_testimonials',
-  OFFERS: 'velvet_cocoa_offers',
-  BANNERS: 'velvet_cocoa_banners',
-  TRUST: 'velvet_cocoa_trust',
-  SETTINGS: 'velvet_cocoa_settings',
-  CART: 'velvet_cocoa_cart',
-  WISHLIST: 'velvet_cocoa_wishlist',
-  MESSAGES: 'velvet_cocoa_messages',
-  ADMIN_AUTH: 'velvet_cocoa_admin_auth',
+  PRODUCTS: 'homemade_cakes_trichy_products',
+  CATEGORIES: 'homemade_cakes_trichy_categories',
+  ORDERS: 'homemade_cakes_trichy_orders',
+  CUSTOMERS: 'homemade_cakes_trichy_customers',
+  COUPONS: 'homemade_cakes_trichy_coupons',
+  REVIEWS: 'homemade_cakes_trichy_reviews',
+  TESTIMONIALS: 'homemade_cakes_trichy_testimonials',
+  OFFERS: 'homemade_cakes_trichy_offers',
+  BANNERS: 'homemade_cakes_trichy_banners',
+  TRUST: 'homemade_cakes_trichy_trust',
+  SETTINGS: 'homemade_cakes_trichy_settings',
+  CART: 'homemade_cakes_trichy_cart',
+  WISHLIST: 'homemade_cakes_trichy_wishlist',
+  MESSAGES: 'homemade_cakes_trichy_messages',
+  ADMIN_AUTH: 'homemade_cakes_trichy_admin_auth',
 };
 
 function loadStorage<T>(key: string, fallback: T): T {
   try {
     const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : fallback;
+    if (item) return JSON.parse(item);
+    // Legacy migration check from previous store key
+    const legacyKey = key.replace('homemade_cakes_trichy_', 'velvet_cocoa_');
+    const legacyItem = localStorage.getItem(legacyKey);
+    return legacyItem ? JSON.parse(legacyItem) : fallback;
   } catch {
     return fallback;
   }
@@ -312,9 +316,25 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [trustItems, setTrustItems] = useState<TrustItem[]>(() =>
     loadStorage(STORAGE_KEYS.TRUST, initialTrustItems)
   );
-  const [siteSettings, setSiteSettings] = useState<SiteSettings>(() =>
-    loadStorage(STORAGE_KEYS.SETTINGS, initialSiteSettings)
-  );
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>(() => {
+    const loaded = loadStorage(STORAGE_KEYS.SETTINGS, initialSiteSettings);
+    if (loaded && (loaded.brandName === 'Velvet Cocoa' || !loaded.brandName)) {
+      return {
+        ...loaded,
+        brandName: 'Homemade Cakes Trichy',
+        tagline: 'Artisanal Home Bakery & Custom Cakes',
+        description:
+          'Handcrafted custom celebration cakes, freshly baked brownies, and gourmet desserts made with love in Trichy.',
+        logo: 'Homemade Cakes Trichy',
+        email: 'concierge@homemadecakestrichy.com',
+        address: '42 Heritage Atelier Lane, Thillai Nagar, Tiruchirappalli (Trichy), Tamil Nadu 620018',
+        instagramHandle: '@homemadecakestrichy',
+        metaTitle: 'Homemade Cakes Trichy - Artisanal Bakery & Custom Cakes',
+        metaDescription: 'Fresh homemade celebration cakes, artisanal brownies, and custom dessert hampers in Trichy.',
+      };
+    }
+    return loaded;
+  });
   const [cart, setCart] = useState<CartItem[]>(() =>
     loadStorage(STORAGE_KEYS.CART, [])
   );
@@ -329,7 +349,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         email: 'pooja.v@example.com',
         phone: '+91 98450 11223',
         subject: 'Corporate Diwali Gifting for 80 hampers',
-        message: 'Hello Velvet Cocoa team! We are looking to order 80 luxury dessert boxes for our executive clients in October. Could you share corporate rates and custom branding options?',
+        message: 'Hello Homemade Cakes Trichy team! We are looking to order 80 luxury dessert boxes for our executive clients in October. Could you share corporate rates and custom branding options?',
         status: 'unread',
         createdAt: '2026-09-16T07:30:00Z',
       },
@@ -413,7 +433,24 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       });
       unsubSettings = subscribeToSiteSettings((cloudSettings) => {
         if (cloudSettings) {
-          setSiteSettings(cloudSettings);
+          if (cloudSettings.brandName === 'Velvet Cocoa' || !cloudSettings.brandName) {
+            const updated: SiteSettings = {
+              ...cloudSettings,
+              brandName: 'Homemade Cakes Trichy',
+              tagline: 'Artisanal Home Bakery & Custom Cakes',
+              description: 'Handcrafted custom celebration cakes, freshly baked brownies, and gourmet desserts made with love in Trichy.',
+              logo: 'Homemade Cakes Trichy',
+              email: 'concierge@homemadecakestrichy.com',
+              address: '42 Heritage Atelier Lane, Thillai Nagar, Tiruchirappalli (Trichy), Tamil Nadu 620018',
+              instagramHandle: '@homemadecakestrichy',
+              metaTitle: 'Homemade Cakes Trichy - Artisanal Bakery & Custom Cakes',
+              metaDescription: 'Fresh homemade celebration cakes, artisanal brownies, and custom dessert hampers in Trichy.',
+            };
+            setSiteSettings(updated);
+            saveSiteSettingsToFirestore(updated).catch(console.error);
+          } else {
+            setSiteSettings(cloudSettings);
+          }
         }
       });
     } catch (e) {
@@ -737,7 +774,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     paymentId?: string;
     paymentStatus?: PaymentStatus;
   }): Order => {
-    const orderNumber = `VC-${Math.floor(1000 + Math.random() * 9000)}`;
+    const orderNumber = `HCT-${Math.floor(1000 + Math.random() * 9000)}`;
     const now = new Date().toISOString();
 
     const orderItems = cart.map((item, idx) => ({

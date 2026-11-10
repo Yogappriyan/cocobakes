@@ -57,8 +57,8 @@ export interface PaymentProcessResult {
 export function processRazorpayPayment({
   amount,
   currency = 'INR',
-  brandName = 'Velvet Cocoa',
-  description = 'Artisanal Bakery & Chocolates Order',
+  brandName = 'Homemade Cakes Trichy',
+  description = 'Artisanal Cakes & Homemade Desserts Order',
   customer,
   keyId,
   orderId,
@@ -82,7 +82,7 @@ export function processRazorpayPayment({
   return new Promise(async (resolve) => {
     const loaded = await loadRazorpayScript();
     const envKey = (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || '';
-    const activeKey = keyId || envKey || 'rzp_test_VelvetCocoaDemo';
+    const activeKey = keyId || envKey || 'rzp_test_HomemadeCakesDemo';
 
     const handleSuccess = (paymentId: string) => {
       if (onSuccess) onSuccess(paymentId);

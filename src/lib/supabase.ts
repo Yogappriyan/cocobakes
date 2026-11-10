@@ -18,7 +18,7 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
  * SQL Schema for Supabase Setup.
  * Users can execute this in their Supabase SQL editor to create all required tables.
  */
-export const SUPABASE_SQL_SCHEMA = `-- Velvet Cocoa Supabase Database Schema
+export const SUPABASE_SQL_SCHEMA = `-- Homemade Cakes Trichy Supabase Database Schema
 -- Run this script in your Supabase SQL Editor
 
 -- 1. Enable UUID extension

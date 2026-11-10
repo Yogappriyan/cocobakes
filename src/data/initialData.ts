@@ -125,7 +125,7 @@ export const initialProducts: Product[] = [
     status: 'active',
     rating: 4.9,
     reviewCount: 142,
-    seoTitle: 'Ferrero Rocher Hazelnut Brownie Box | Velvet Cocoa',
+    seoTitle: 'Ferrero Rocher Hazelnut Brownie Box | Homemade Cakes Trichy',
     seoDescription: 'Handcrafted dark fudge brownies topped with roasted hazelnuts and Ferrero Rocher.',
     tags: ['Brownie', 'Ferrero', 'Hazelnut', 'Best Seller', 'Gifting'],
     featured: true,
@@ -178,7 +178,7 @@ export const initialProducts: Product[] = [
     status: 'active',
     rating: 4.8,
     reviewCount: 98,
-    seoTitle: 'Artisan Classic Molten Fudge Brownies | Velvet Cocoa',
+    seoTitle: 'Artisan Classic Molten Fudge Brownies | Homemade Cakes Trichy',
     seoDescription: 'Ultra fudgy dark chocolate brownies with crackly tops and gooey center.',
     tags: ['Brownie', 'Classic', 'Dark Chocolate', 'Gourmet'],
     featured: true,
@@ -230,7 +230,7 @@ export const initialProducts: Product[] = [
     status: 'active',
     rating: 5.0,
     reviewCount: 64,
-    seoTitle: 'Belgian Couverture Truffle Celebration Cake | Velvet Cocoa',
+    seoTitle: 'Belgian Couverture Truffle Celebration Cake | Homemade Cakes Trichy',
     seoDescription: 'Triple-layer Belgian chocolate mousse cake finished with mirror glaze.',
     tags: ['Cake', 'Belgian', 'Celebration', 'Birthday', 'Luxury'],
     featured: true,
@@ -281,7 +281,7 @@ export const initialProducts: Product[] = [
     status: 'active',
     rating: 4.9,
     reviewCount: 52,
-    seoTitle: 'NYC Style Chunky Sea-Salt Cookies | Velvet Cocoa',
+    seoTitle: 'NYC Style Chunky Sea-Salt Cookies | Homemade Cakes Trichy',
     seoDescription: 'Thick NYC gourmet cookies loaded with melted chocolate pools.',
     tags: ['Cookies', 'NYC Style', 'Chocolate Chip', 'Sea Salt'],
     featured: true,
@@ -330,7 +330,7 @@ export const initialProducts: Product[] = [
     status: 'active',
     rating: 5.0,
     reviewCount: 38,
-    seoTitle: 'The Grand Atelier Dessert Hamper | Velvet Cocoa Gifting',
+    seoTitle: 'The Grand Atelier Dessert Hamper | Homemade Cakes Trichy Gifting',
     seoDescription: 'Luxury bakery gift hamper with brownies, truffles, and gourmet cookies.',
     tags: ['Hamper', 'Gift', 'Luxury', 'Celebration', 'Assorted'],
     featured: true,
@@ -611,7 +611,7 @@ export const initialTestimonials: Testimonial[] = [
     rating: 5,
     comment:
       'The Ferrero Brownie Box is genuinely world-class. You can taste the genuine French butter and high-percentage Belgian cocoa. The crackly crust with molten center is pure perfection!',
-    location: 'Bangalore',
+    location: 'Thillai Nagar, Trichy',
     active: true,
   },
   {
@@ -621,8 +621,8 @@ export const initialTestimonials: Testimonial[] = [
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     rating: 5,
     comment:
-      'Ordered the Grand Atelier Hamper for my anniversary. The packaging with the satin gold ribbon and handwritten note felt so bespoke. My wife was in dessert heaven.',
-    location: 'Mumbai',
+      'Ordered the Grand Atelier Hamper for my anniversary. The packaging with the satin gold ribbon and handwritten note felt so bespoke. My family was in dessert heaven.',
+    location: 'Cantonment, Trichy',
     active: true,
   },
   {
@@ -633,27 +633,27 @@ export const initialTestimonials: Testimonial[] = [
     rating: 5,
     comment:
       'The NYC chunky sea-salt cookies are gigantic, warm, and have these generous melted pools of chocolate. Delivery arrived in under 2 hours, beautifully packaged.',
-    location: 'Delhi NCR',
+    location: 'KK Nagar, Trichy',
     active: true,
   },
 ];
 
 export const initialSiteSettings: SiteSettings = {
-  brandName: 'Velvet Cocoa',
-  tagline: 'Artisanal Bakery & Chocolatier',
+  brandName: 'Homemade Cakes Trichy',
+  tagline: 'Artisanal Home Bakery & Custom Cakes',
   description:
-    'Luxury patisserie specializing in handcrafted Belgian brownies, celebration cakes, and couture chocolates.',
-  logo: 'Velvet Cocoa',
+    'Handcrafted custom celebration cakes, freshly baked brownies, and gourmet desserts made with love in Trichy.',
+  logo: 'Homemade Cakes Trichy',
   primaryColor: '#23120B', // Dark Cocoa
   secondaryColor: '#C59B27', // Subtle Gold Accent
   accentColor: '#3E2723',
   bgColor: '#FAF7F2', // Warm cream
   contactNumber: '+91 98765 43210',
   whatsappNumber: '+919876543210',
-  email: 'concierge@velvetcocoa.com',
-  address: '42 Heritage Atelier Lane, Indiranagar, Bengaluru, 560038',
+  email: 'concierge@homemadecakestrichy.com',
+  address: '42 Heritage Atelier Lane, Thillai Nagar, Tiruchirappalli (Trichy), Tamil Nadu 620018',
   businessHours: 'Monday – Sunday: 9:00 AM – 11:00 PM',
-  instagramHandle: '@velvetcocoa.atelier',
+  instagramHandle: '@homemadecakestrichy',
   instagramUrl: 'https://instagram.com',
   currencySymbol: '₹',
   currencyCode: 'INR',
@@ -664,23 +664,23 @@ export const initialSiteSettings: SiteSettings = {
   sameDayDeliveryFee: 150,
   enableCod: true,
   enableRazorpay: true,
-  razorpayKeyId: 'rzp_test_VelvetCocoaDemo',
-  pincodesServiced: ['560001', '560002', '560008', '560025', '560034', '560038', '560066', '560075', '560100', '110001', '400001'],
-  metaTitle: 'Velvet Cocoa - Artisanal Bakery & Chocolatier',
-  metaDescription: 'Handcrafted brownies, celebration cakes, and gift hampers made fresh daily.',
+  razorpayKeyId: 'rzp_test_HomemadeCakesDemo',
+  pincodesServiced: ['620001', '620002', '620003', '620005', '620006', '620017', '620018', '620020', '620021', '620024', '620025'],
+  metaTitle: 'Homemade Cakes Trichy - Artisanal Bakery & Custom Cakes',
+  metaDescription: 'Fresh homemade celebration cakes, artisanal brownies, and custom dessert hampers in Trichy.',
   heroHeadline: 'Made With Love. Baked To Perfection.',
   heroSubheadline:
-    'Handcrafted brownies, single-origin chocolates, and decadent desserts made fresh for every special moment.',
+    'Fresh homemade cakes, fudgy brownies, and custom celebration desserts baked to order in Trichy.',
   heroPrimaryCta: 'Shop Collection',
-  heroSecondaryCta: 'Explore Brownies',
-  announcementBarText: '✨ Indulge with Free Same-Day Delivery on orders above ₹899 | Use Code: WELCOME10',
+  heroSecondaryCta: 'Explore Cakes',
+  announcementBarText: '✨ Freshly Baked Homemade Cakes in Trichy | Same-Day Delivery on orders above ₹899 | Use Code: WELCOME10',
   announcementBarActive: true,
 };
 
 export const initialOrders: Order[] = [
   {
     id: 'ord-1001',
-    orderNumber: 'VC-8921',
+    orderNumber: 'HCT-8921',
     customerId: 'cust-1',
     customer: {
       fullName: 'Rhea Kapoor',
@@ -749,7 +749,7 @@ export const initialOrders: Order[] = [
   },
   {
     id: 'ord-1002',
-    orderNumber: 'VC-8920',
+    orderNumber: 'HCT-8920',
     customerId: 'cust-2',
     customer: {
       fullName: 'Arjun Singhania',

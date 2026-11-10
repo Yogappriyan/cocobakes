@@ -217,7 +217,7 @@ export const InvoiceModal: React.FC<InvoiceModalProps> = ({ order, onClose }) =>
           {/* Legal / Thank you note */}
           <div className="pt-6 border-t border-[#2D1810]/10 text-center text-[11px] text-[#3E2723]/70 space-y-1">
             <p className="font-serif italic text-sm text-[#23120B]">
-              Thank you for celebrating with Velvet Cocoa Atelier!
+              Thank you for celebrating with {siteSettings.brandName}!
             </p>
             <p>
               This is a computer-generated tax invoice and requires no physical signature.

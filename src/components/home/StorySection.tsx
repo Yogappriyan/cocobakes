@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStore } from '../../context/StoreContext';
 import { Sparkles, Heart, CheckCircle2 } from 'lucide-react';
 
 interface StorySectionProps {
@@ -6,6 +7,7 @@ interface StorySectionProps {
 }
 
 export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
+  const { siteSettings } = useStore();
   return (
     <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -53,7 +55,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
           </h2>
 
           <p className="text-sm sm:text-base text-[#3E2723]/80 leading-relaxed font-normal">
-            Velvet Cocoa was founded on a simple, unapologetic principle: real chocolate desserts should taste intensely decadent, buttery, and memorable. We don’t use compound chocolates, palm oils, or artificial emulsifiers.
+            {siteSettings.brandName} was founded on a simple, unapologetic principle: real homemade desserts should taste intensely decadent, buttery, and memorable. We don’t use compound chocolates, palm oils, or artificial emulsifiers.
           </p>
 
           <p className="text-sm sm:text-base text-[#3E2723]/80 leading-relaxed font-normal">
